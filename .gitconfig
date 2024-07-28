@@ -1,0 +1,9 @@
+[credential]
+	helper = store # Cache credentials in memory for much longer than a cache
+[user]
+	email = timothyportnoff@gmail.com
+	name = timothyportnoff
+[core]
+	editor = vim # Yes vim is the best
+[color]
+	ui = auto # Enable colored output
