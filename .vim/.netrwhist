@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/root/dotfiles/neofetch'
+let g:netrw_dirhist_0='/home/timochi/awesome-cv/examples/resume'
+let g:netrw_dirhist_9='/home/timochi/awesome-cv'
+let g:netrw_dirhist_8='/home/timochi/projects/whisper/whisper'
+let g:netrw_dirhist_7='/home/timochi/projects/auto-short/output'
+let g:netrw_dirhist_6='/home/timochi/projects/auto-short/venv'
+let g:netrw_dirhist_5='/home/timochi/awesome-cv/examples/resume'
+let g:netrw_dirhist_4='/home/timochi/awesome-cv/examples'
+let g:netrw_dirhist_3='/home/timochi/awesome-cv/examples/resume'
+let g:netrw_dirhist_2='/home/timochi/awesome-cv/examples'
