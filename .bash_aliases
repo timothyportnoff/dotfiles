@@ -1,18 +1,18 @@
 ################################################################
-#
-#timothyportnoff
-#
+#timothyportnoff .bash_aliases
 ################################################################
 
 #Some ls aliases
 alias ll='ls -alF'
-alias la='ls -A' #Don't show the implied .. and .
+# alias la='ls -A' #Don't show the implied .. and .
 # alias ls='ls --color=auto -CF'
 alias ll='ls -lAh'
 
 #LSD aliases
-alias lsd='lsd --icon-theme unicode --total-size -A --gitsort --long --git --blocks permission,size,git,name'
-alias ls=lsd
+alias lsd='lsd --total-size --sort size --blocks permission,size,git,name'
+# alias la='lsd --icon-theme unicode --total-size -A --sort size --long --git --blocks permission,size,git,name'
+alias ls='lsd'
+alias la='lsd -A'
 
 #Quick sourcing for configuration files
 alias sbc='source ~/.bashrc'
@@ -78,12 +78,13 @@ alias gbav='git branch -av'
 alias gbva='git branch -va'
 
 #Make aliases
-alias mk='make -j8'
-alias make='make -j8'
+# I have the -j8 flag on everything to speed it up on all of my cores or something on my Raspberry Pi. Disabled for now
+# alias mk='make -j8'
+# alias make='make -j8'
 #I don't know how many times I've fucked up make, so these aliases are for my hot dog fingers
-alias makew='make -j8'
-alias amke='make -j8'
-alias maek='make -j8'
+# alias makew='make -j8'
+# alias amke='make -j8'
+# alias maek='make -j8'
 
 #Python aliases 
 alias py='python3'
@@ -99,7 +100,7 @@ alias ct='crontab -e'
 
 #C++ Compiler aliases
 alias gg='eval $(history -p !g++)'
-alias g++='g++ -std=c++20'
+alias 'g++'='g++ -std=c++20'
 
 #Miscellaneous 
 alias print='lpadmin --help'
