@@ -191,6 +191,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#Source our Stripe auto-completion file
+source ~/.stripe/stripe-completion.bash
+
 #Set neofetch for terminal 
 clear #clear the screen for neo
  neofetch --ascii "$(fortune | cowsay -W 30 -s)" --ascii --ascii_distro ubuntu\ #--colors 84 245 245 84 245 255\ #--color_blocks on 		
@@ -205,3 +208,6 @@ set -o nounset 		#Treats unset variables as an error when substituting.
 
 #Add this to our path, so we can use npm/strip
 export PATH=$PATH:/usr/local/lib
+
+#Add this to our path, so we can uhhhhh 
+export PATH="$HOME/.cargo/bin:$PATH"
