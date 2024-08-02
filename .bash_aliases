@@ -13,6 +13,7 @@ alias lsd='lsd --total-size --sort size --blocks permission,size,git,name'
 # alias la='lsd --icon-theme unicode --total-size -A --sort size --long --git --blocks permission,size,git,name'
 alias ls='lsd'
 alias la='lsd -A'
+alias lsa='lsd -A'
 
 #Quick sourcing for configuration files
 alias sbc='source ~/.bashrc'
@@ -39,14 +40,17 @@ alias cls='clear'
 alias cd..='cd ..'
 alias m..='man'
 
+#Stripe aliasing
+alias ssrv="./stripe serve --help --color on --loglevel debug --port 4242"
 
-#Github aliases
+#Github aliasing
 alias ga='git add'
 alias gf='git fetch'
 alias gc='git commit'
 alias gs='git status'
 alias gsp='git status --porcelain'
 alias gcl='git clone'
+alias gpl='git pull'
 alias gcm='git commit -m'
 alias gps='git push'
 alias gch='git checkout'
@@ -79,12 +83,15 @@ alias gbva='git branch -va'
 
 #Make aliases
 # I have the -j8 flag on everything to speed it up on all of my cores or something on my Raspberry Pi. Disabled for now
-# alias mk='make -j8'
-# alias make='make -j8'
+alias mk='make -j8'
+alias make='make -j8'
 #I don't know how many times I've fucked up make, so these aliases are for my hot dog fingers
-# alias makew='make -j8'
-# alias amke='make -j8'
-# alias maek='make -j8'
+alias makew='mk'
+alias makee='mk'
+alias amke='mk'
+alias maek='mk'
+alias amek='mk'
+alias amke='mk'
 
 #Python aliases 
 alias py='python3'
