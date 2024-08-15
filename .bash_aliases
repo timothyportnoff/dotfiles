@@ -31,10 +31,8 @@ alias vnc='vim ~/.config/neofetch/config.conf'
 alias a='./a.out'
 
 #Unix aliases
-#alias vv='!v?'
-#Why's this shit gotta be so difficult?? 
-#eval handles filenames correctly if they contain characters that might trigger an expansion, such as spaces.
 alias update='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt clean'
+#eval handles filenames correctly if they contain characters that might trigger an expansion, such as spaces.
 alias vv='eval $(history -p !vi)'
 alias bb='eval $(history -p !vi)'
 alias pp='eval $(history -p !p)'
@@ -42,11 +40,9 @@ alias cls='clear'
 alias cd..='cd ..'
 alias m..='man'
 
-#Stripe aliasing
-alias ssrv="./stripe serve --help --color on --loglevel debug --port 4242"
-
 #Github aliasing
 alias ga='git add'
+alias gd='git diff'
 alias gf='git fetch'
 alias gc='git commit'
 alias gs='git status'
