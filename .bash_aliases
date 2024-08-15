@@ -1,19 +1,21 @@
-################################################################
+##########################################################
 #timothyportnoff .bash_aliases
-################################################################
+#This one doesn't have a cool figlet like my .vimrc... ToT
+#Maybe I'll make one with toilet
+##########################################################
 
-#Some ls aliases
-alias ll='ls -alF'
+# Unix Aliases  
+alias htop='htop -H --tree'
+alias top='htop'
+
+# ls aliases
+alias ls='ls --color=auto -CF --group-directories-first'
+alias ll='ls -lF --almost-all'
 # alias la='ls -A' #Don't show the implied .. and .
-# alias ls='ls --color=auto -CF'
-alias ll='ls -lAh'
-
-#LSD aliases
-alias lsd='lsd --total-size --sort size --blocks permission,size,git,name'
-# alias la='lsd --icon-theme unicode --total-size -A --sort size --long --git --blocks permission,size,git,name'
+alias lsd='lsd --total-size --sort size --blocks permission,size,git,name --group-directories-first'
 alias ls='lsd'
-alias la='lsd -A'
-alias lsa='lsd -A'
+alias la='lsd --almost-all'
+alias lsa='lsd --almost-all'
 
 #Quick sourcing for configuration files
 alias sbc='source ~/.bashrc'
@@ -72,6 +74,7 @@ alias gch='git checkout'
 
 #     return 0
 # }
+
 #Branches
 alias gb='git branch'
 alias gba='git branch -a'
@@ -100,7 +103,6 @@ alias act='source $(find . -type d -name "venv" -o -name ".venv" | head -n 1)/bi
 alias dact='deactivate'
 alias deact='deactivate'
 alias mkvenv='python3 -m venv venv/'
-
 
 #Cronjobs
 alias ct='crontab -e'
