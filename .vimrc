@@ -140,15 +140,19 @@ set background=dark " /light
 
 
 "Phase 2: Choose Colorscheme Most commonly uses colorschemes:
-"colorscheme hemisu
-"colorscheme ayu
-"colorscheme one 
-"colorscheme jellybeans 
-"colorscheme paramount 
-colorscheme molokai
-"colorscheme badwolf
-"colorscheme onehalfdark
-"colorscheme black-coffee-molokai
+" colorscheme hemisu
+" colorscheme ayu
+colorscheme one 
+" colorscheme jellybeans 
+" colorscheme paramount 
+" colorscheme molokai
+" colorscheme onehalfdark
+" colorscheme gruvbox
+" colorscheme nord
+" colorscheme seoul256
+" colorscheme desert
+" colorscheme hybrid
+" colorscheme lucius
 
 
 " Phase 3: Force Delete GUI and CTERM background of Normal group for a dark terminal
@@ -157,3 +161,16 @@ hi Normal guibg=NONE ctermbg=NONE
 "End ==================================================================================================== 
 
 runtime! ftplugin/man.vim
+
+"Allows for OpenAI integration with :AI in Vim
+let g:vim_ai_token_file_path = '~/.config/openai.token'
+
+"Vim Plug mod manager
+call plug#begin()
+
+" List your plugins here
+Plug 'tpope/vim-sensible'
+Plug 'madox2/vim-ai'
+" Plug 'mattn/emmet-vim'
+
+call plug#end()
