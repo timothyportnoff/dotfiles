@@ -17,6 +17,13 @@ set nocompatible 		" makes Vim behave more like the traditional Vi editor
 set ai 					" Enables autoindent for when you press \<CR>
 
 "Options for how Vim displays text: ====================================================================================================   
+set cursorline! cursorcolumn! 	" Allow crosshair cursor highlighting. Press leader and c (\+c) to enable/disable
+" hi CursorLine   cterm=NONE ctermbg=0 					" ^
+" hi CursorColumn cterm=NONE ctermbg=0 					" ^
+" hi CursorLine   cterm=NONE ctermbg=0 ctermfg=white 		" ^
+" hi CursorColumn cterm=NONE ctermbg=0 ctermfg=white 		" ^
+
+" This will make the highlighted line and column stand out more by changing the text color to white. You can also adjust the background color (ctermbg) to a darker shade to make the highlight more prominent. 
 set nowrap 				" Set wraparound. Easier to read long lines of code.
 set nolinebreak 		" Set linebreak. If enabled, words will not be cut off at the end of the buffer.
 set bs=2 				" Enables the backspace to behave like most modern text editors. Lets you delete characters across line breaks.
@@ -42,8 +49,8 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 "Leader keys ==================================================================================================== 
 nnoremap <return> :noh<CR> 								" turns off the highlighting of the most recent search pattern
 noremap <Leader>c :set cursorline! cursorcolumn!<CR> 	" Allow crosshair cursor highlighting. Press leader and c (\+c) to enable/disable
-hi CursorLine   cterm=NONE ctermbg=0 					" ^
-hi CursorColumn cterm=NONE ctermbg=0 					" ^
+" hi CursorLine   cterm=NONE ctermbg=0 					" ^
+" hi CursorColumn cterm=NONE ctermbg=0 					" ^
 noremap <Leader>s :wqa<CR> 								" Quick write quit all. TODO: Useless
 noremap <Leader>sn :set number!<CR> 					" Show line numbers numerically
 noremap <Leader>rn :set relativenumber!<CR> 			" Show lune numbers as distances from current line.
@@ -136,16 +143,15 @@ endif " has("autocmd")
 
 "PHase one: Choose the color scheme beforehand and enables colors
 set termguicolors "Turns on 24-bit colors, 
-set background=dark " /light
-
+" set background=dark " /light
 
 "Phase 2: Choose Colorscheme Most commonly uses colorschemes:
 " colorscheme hemisu
 " colorscheme ayu
-colorscheme one 
+" colorscheme one 
 " colorscheme jellybeans 
 " colorscheme paramount 
-" colorscheme molokai
+colorscheme molokai
 " colorscheme onehalfdark
 " colorscheme gruvbox
 " colorscheme nord
@@ -154,10 +160,23 @@ colorscheme one
 " colorscheme hybrid
 " colorscheme lucius
 
-
 " Phase 3: Force Delete GUI and CTERM background of Normal group for a dark terminal
-hi Normal guibg=NONE ctermbg=NONE 
+hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE 
 
+" Phase 4: Create function to clear background and call it
+let t:is_transparent = 1
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_transparent = 0
+    endif
+endfunction
+nnoremap <Leader>b : call Toggle_transparent()<CR>
+call Toggle_transparent()
+autocmd VimEnter * call Toggle_transparent()
 "End ==================================================================================================== 
 
 runtime! ftplugin/man.vim
