@@ -197,6 +197,7 @@ source ~/.stripe/stripe-completion.bash
 #Set neofetch for terminal 
 clear #clear the screen for neo
  neofetch --ascii "$(fortune | cowsay -W 30 -s)" --ascii --ascii_distro ubuntu\ #--colors 84 245 245 84 245 255\ #--color_blocks on 		
+ # neofetch --ascii --ascii_distro ubuntu #--colors 84 245 245 84 245 255\ #--color_blocks on 		
 # I'll never have arch ;^;
 # neofetch --ascii_distro arch_small
 
@@ -211,3 +212,8 @@ export PATH=$PATH:/usr/local/lib
 
 #Add this to our path, so we can uhhhhh 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+#Path for Short generator
+export MAGICK_HOME=/usr
+export PATH=$PATH:$MAGICK_HOME/bin
+
