@@ -1,14 +1,19 @@
 ##########################################################
 #timothyportnoff .bash_aliases
-#This one doesn't have a cool figlet like my .vimrc... ToT
-#Maybe I'll make one with toilet
+#This one doesn't have a cool figlet/toilet like my .vimrc... ToT
 ##########################################################
+
+#Frequently vimmed/sourced configuration files
+alias sbc='source ~/.bashrc'
+alias sba='source ~/.bash_aliases'
+alias vvc='vim ~/.vimrc'
+alias vbc='vim ~/.bashrc'
+alias vba='vim ~/.bash_aliases'
+alias vnc='vim ~/.config/neofetch/config.conf'
 
 # Unix Aliases  
 alias htop='htop -H --tree'
 alias top='htop'
-
-# ls aliases
 alias ls='ls --color=auto -CF --group-directories-first'
 alias ll='ls -lF --almost-all'
 # alias la='ls -A' #Don't show the implied .. and .
@@ -16,21 +21,6 @@ alias lsd='lsd --total-size --sort size --blocks permission,size,git,name --grou
 alias ls='lsd'
 alias la='lsd --almost-all'
 alias lsa='lsd --almost-all'
-
-#Quick sourcing for configuration files
-alias sbc='source ~/.bashrc'
-alias sba='source ~/.bash_aliases'
-
-#Quick vimming to configuration files
-alias vvc='vim ~/.vimrc'
-alias vbc='vim ~/.bashrc'
-alias vba='vim ~/.bash_aliases'
-alias vnc='vim ~/.config/neofetch/config.conf'
-
-#Running things
-alias a='./a.out'
-
-#Unix aliases
 alias update='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt clean'
 #eval handles filenames correctly if they contain characters that might trigger an expansion, such as spaces.
 alias vv='eval $(history -p !vi)'
@@ -53,23 +43,6 @@ alias gcm='git commit -m'
 alias gps='git push'
 alias gch='git checkout'
 alias gch='git checkout'
-# complete -F _git_checkout gch
-# _git_checkout() {
-#     COMPREPLY=()
-#     local cur=${COMP_WORDS[COMP_CWORD]}
-#     local branches
-
-#     # Use git branch to fetch a list of branches
-#     branches=$(git branch 2>/dev/null)
-
-#     # Remove the asterisks and leading spaces from the branch names
-#     branches=${branches//\* /}
-
-#     # Generate completion options from the list of branches
-#     COMPREPLY=($(compgen -W "$branches" -- $cur))
-
-#     return 0
-# }
 
 #Branches
 alias gb='git branch'
@@ -80,17 +53,19 @@ alias gbd='git diff $1:main.py $2:main.py'
 alias gbav='git branch -av'
 alias gbva='git branch -va'
 
-#Make aliases
-# I have the -j8 flag on everything to speed it up on all of my cores or something on my Raspberry Pi. Disabled for now
+#C++/Makefile aliases
+# I use the -j8 flag to use all cores on my Raspberry Pi
 alias mk='make -j8'
 alias make='make -j8'
-#I don't know how many times I've fucked up make, so these aliases are for my hot dog fingers
-alias makew='mk'
+alias makew='mk' #fucked up hot dog finger aliases
 alias makee='mk'
 alias amke='mk'
 alias maek='mk'
 alias amek='mk'
 alias amke='mk'
+alias gg='eval $(history -p !g++)'
+alias 'g++'='g++ -std=c++20'
+alias a='./a.out'
 
 #Python aliases 
 alias py='python3'
@@ -102,10 +77,6 @@ alias mkvenv='python3 -m venv venv/'
 
 #Cronjobs
 alias ct='crontab -e'
-
-#C++ Compiler aliases
-alias gg='eval $(history -p !g++)'
-alias 'g++'='g++ -std=c++20'
 
 #Miscellaneous 
 alias print='lpadmin --help'
