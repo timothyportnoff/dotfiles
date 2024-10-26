@@ -17,7 +17,7 @@ alias top='htop'
 alias ls='ls --color=auto -CF --group-directories-first'
 alias ll='ls -lF --almost-all'
 # alias la='ls -A' #Don't show the implied .. and .
-alias lsd='lsd --total-size --sort size --blocks permission,size,git,name --group-directories-first'
+alias lsd='lsd --total-size --sort size --blocks permission,size,git,name --group-directories-first --icon-theme unicode'
 alias ls='lsd'
 alias la='lsd --almost-all'
 alias lsa='lsd --almost-all'
