@@ -142,7 +142,7 @@ endif " has("autocmd")
 "Colors ==================================================================================================== 
 
 "PHase one: Choose the color scheme beforehand and enables colors
-set termguicolors "Turns on 24-bit colors, 
+"set termguicolors "Turns on 24-bit colors, 
 " set background=dark " /light
 
 "Phase 2: Choose Colorscheme Most commonly uses colorschemes:
@@ -151,7 +151,7 @@ set termguicolors "Turns on 24-bit colors,
 " colorscheme one 
 " colorscheme jellybeans 
 " colorscheme paramount 
-colorscheme molokai
+"colorscheme molokai
 " colorscheme onehalfdark
 " colorscheme gruvbox
 " colorscheme nord
@@ -185,11 +185,11 @@ runtime! ftplugin/man.vim
 let g:vim_ai_token_file_path = '~/.config/openai.token'
 
 "Vim Plug mod manager
-call plug#begin()
+"call plug#begin()
 
 " List your plugins here
-Plug 'tpope/vim-sensible'
-Plug 'madox2/vim-ai'
+"Plug 'tpope/vim-sensible'
+"Plug 'madox2/vim-ai'
 " Plug 'mattn/emmet-vim'
 
-call plug#end()
+"call plug#end()
