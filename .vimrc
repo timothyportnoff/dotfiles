@@ -26,7 +26,7 @@ set nolinebreak 		" Set linebreak. If enabled, words will not be cut off at the 
 set bs=2 				" Enables the backspace to behave like most modern text editors. Lets you delete characters across line breaks.
 
 "Searching
-set ignorecase 					" Ignores case sensitivity when pattern searching.
+set ignorecase 			" Ignores case sensitivity when pattern searching.
 set smartcase
 set hls 				" Enables the highlight search feature, for visual identification.
 set incsearch 	  		" Highlights incremental search matches as you type.
@@ -37,16 +37,22 @@ set tabpagemax=20 		" Limits the number of maximum tabs for performance.
 set sw=4 				" Set shift width for '>>' and '<<'.
 set magic 				" simplifies regular expression usage by reducing the need for excessive backslashes.
 set matchtime=0 		" Time in milliseconds to show matching parentheses or brackets.
+
+"Bells 
 set noerrorbells 		" Disable error bells.
-set belloff=all 		" Turn off all bell notifications.
 set vb t_vb="" 			" Disables visual bell and sets visualbell character to empty.
+
 syntax on 				" Syntax settings.
 set noscrollbind 		" Synchronizes scrolling behavior between split windows. We want this off so we can scroll windows side-by-side indepentently.
 ""set relativenumber 	" Jumpy line strats, show lines as [4 3 2 1 [0] 1 2 3 4].
 ""set nonumber 			" Set number. Show number on left side of screen.
 ""set expandtab 		" Changes tab to spaces.
-""set undolevels=0 		" Unlimited undo levels if set to offs. If 0, Allows for undo/redo.
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+"Undo/Redo History
+"set undolevels=0 		" Unlimited undo levels if set to offs. If 0, Allows for undo/redo.
+set undofile
+set undodir=~/.vim/undo
 
 "Leader keys ==================================================================================================== 
 nnoremap <return> :noh<CR> 								" turns off the highlighting of the most recent search pattern
@@ -205,4 +211,5 @@ nnoremap <leader>t ^i{/* <Esc>$a */}<Esc>
 
 " Leader-y: remove JSX comment
 nnoremap <leader>y :s/^\s*{\/*\s*\(.*\)\s*\*\/}$/\1/<CR>
+
 inoremap jk <Esc>
