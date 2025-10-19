@@ -8,9 +8,6 @@
 "    \$$  $$| $$| $$ | $$ | $$|       $$      |  \\$$$   | $$| $$ | $$ | $$| $$       \$$     \  
 "     \$$$$  \$$ \$$  \$$  \$$ \$$$$$$$        \$$ \$     \$$ \$$  \$$  \$$ \$$        \$$$$$$$  
 "                                                                                                
-" student_id = portnoff_0795391      
-" while(true) send_coffee(); // (￣┰￣*)
-
 "CONTROLS ====================================================================================================   
 set mouse=a 			" Enables mouse mode. Elite vim wizards do not use this. Though it may make things faster lol ┑(￣Д ￣)┍
 set nocompatible 		" makes Vim behave more like the traditional Vi editor
@@ -27,9 +24,14 @@ set cursorline! cursorcolumn! 	" Allow crosshair cursor highlighting. Press lead
 set nowrap 				" Set wraparound. Easier to read long lines of code.
 set nolinebreak 		" Set linebreak. If enabled, words will not be cut off at the end of the buffer.
 set bs=2 				" Enables the backspace to behave like most modern text editors. Lets you delete characters across line breaks.
-set ic 					" Ignores case sensitivity when pattern searching.
+
+"Searching
+set ignorecase 					" Ignores case sensitivity when pattern searching.
+set smartcase
 set hls 				" Enables the highlight search feature, for visual identification.
 set incsearch 	  		" Highlights incremental search matches as you type.
+
+"Tabs
 set ts=4 				" Set tab spacing.
 set tabpagemax=20 		" Limits the number of maximum tabs for performance.
 set sw=4 				" Set shift width for '>>' and '<<'.
@@ -48,6 +50,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 "Leader keys ==================================================================================================== 
 nnoremap <return> :noh<CR> 								" turns off the highlighting of the most recent search pattern
+nnoremap <leader>t ^i{/* <Esc>$a */}<Esc>
 noremap <Leader>c :set cursorline! cursorcolumn!<CR> 	" Allow crosshair cursor highlighting. Press leader and c (\+c) to enable/disable
 " hi CursorLine   cterm=NONE ctermbg=0 					" ^
 " hi CursorColumn cterm=NONE ctermbg=0 					" ^
@@ -193,3 +196,13 @@ let g:vim_ai_token_file_path = '~/.config/openai.token'
 " Plug 'mattn/emmet-vim'
 
 "call plug#end()
+
+"" Set leader key (if not already)
+let mapleader = "\\"
+
+" Leader-c: wrap current line in JSX comment {/* */}
+nnoremap <leader>t ^i{/* <Esc>$a */}<Esc>
+
+" Leader-y: remove JSX comment
+nnoremap <leader>y :s/^\s*{\/*\s*\(.*\)\s*\*\/}$/\1/<CR>
+inoremap jk <Esc>
