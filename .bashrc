@@ -87,9 +87,9 @@ bash_prompt() {
 	local C="\[\033[0;36m\]"    # cyan
 	local W="\[\033[0;37m\]"    # white
 	local OR="\[\033[38;2;255;165;0m"    # Orange
-	local X1="\033[38;2;238;229;233m"
-	local X2="\033[38;2;128;237;153m"
-	local X3="\033[38;2;70;99;101m"
+	local X1="\[\033[38;2;238;229;233m\]"
+	local X2="\[\033[38;2;128;237;153m\]"
+	local X3="\[\033[38;2;70;99;101m\]"
 
 
 	# emphasized (bolded) colors
@@ -133,7 +133,9 @@ bash_prompt() {
 	#5 - The original
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	#6 - My Personal favorite, but has a strange buffer bug when using up and down keys?
-	# PS1="$TITLEBAR${EMK}[${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK}]${UC}\\$ ${NONE}\a"
+	PS1="$TITLEBAR${EMK}[${UC}\u${EMK}@${UC}apollo ${EMB}\w${EMK}]${UC}\\$ ${NONE}"
+	#7 - White timothy, blue timothyportnoff.com
+	# PS1="$TITLEBAR${EMK}[${W}timothy${EMK}@${EMB}timothyportnoff.com ${EMB}\w${EMK}]${UC}\\$ ${NONE}"
 
 	#This promptis 
     # PS1='\[\033[38;5;214m\]\[\033[0m\]\u\[\033[38;5;208m\]@\[\033[0m\]\h\[\033[38;5;214m\] \[\033[38;5;220m\][\[\033[38;5;117m\]\w\[\033[38;5;220m\]]\[\033[38;5;214m\]$ \[\033[0m\]'
@@ -191,10 +193,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#Set neofetch for terminal 
-clear #clear the screen for neo
-neofetch --ascii "$(fortune | cowsay -W 30 -s)" --ascii --ascii_distro ubuntu\ #--colors 84 245 245 84 245 255\ #--color_blocks on 		
-# neofetch --ascii --ascii_distro ubuntu #--colors 84 245 245 84 245 255\ #--color_blocks on 		
+#The Binding of Input
+export INPUTRC="$HOME/.inputrc"
 
 #Editor settings
 #set -o vi 		#Sets Vi Mode (Vim) in the terminal
@@ -202,5 +202,46 @@ set nocaseglob 		#Matches filenames in a case-insensitive fashion when globbing.
 set -o noclobber 	#Prevents overwriting files via redirection.
 set -o nounset 		#Treats unset variables as an error when substituting.
 
-#The Binding of Input
-export INPUTRC="$HOME/.inputrc"
+#Set neofetch for terminal 
+#clear #clear the screen for neo
+#neofetch --ascii "$(fortune | cowsay -W 30 -s)"
+#Do the neofetch super minimal and then run a cowsay.
+~/./neofetch_minimal && ~/./.cow-nfig
+
+# List important services 
+echo -e "\n\e[1;34m[ Service Status Overview ]\e[0m"
+
+# List of services to check
+services=(
+  "cvin.service"
+  "cvin-dev.service"
+  "home.service"
+  "dev.service"
+  "nginx"
+  "perlite"
+)
+
+for service in "${services[@]}"; do
+  # Check if it's a systemd unit or a process
+  if systemctl list-units --type=service --all | grep -q "$service"; then
+    status=$(systemctl is-active "$service")
+    if [ "$status" = "active" ]; then
+      echo -e " \e[32m✔  $service is running\e[0m"
+    else
+      echo -e " \e[31m✖  $service is $status\e[0m"
+    fi
+  else
+    # fallback to pgrep for non-systemd services
+    if pgrep -x "$service" >/dev/null 2>&1; then
+      echo -e " \e[32m✔  $service process found\e[0m"
+    else
+      echo -e " \e[31m✖  $service not found\e[0m"
+    fi
+  fi
+done
+
+# Show the directory, this is an alias from .bash_aliases
+#ls
+echo -e "\n\e[1;34m[ Directory ]\e[0m"
+ls
+echo
