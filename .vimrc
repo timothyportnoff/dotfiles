@@ -8,8 +8,8 @@
 "    \$$  $$| $$| $$ | $$ | $$|       $$      |  \\$$$   | $$| $$ | $$ | $$| $$       \$$     \  
 "     \$$$$  \$$ \$$  \$$  \$$ \$$$$$$$        \$$ \$     \$$ \$$  \$$  \$$ \$$        \$$$$$$$  
 "                                                                                                
-"CONTROLS ====================================================================================================   
-set mouse=a 			" Enables mouse mode. Elite vim wizards do not use this. Though it may make things faster lol ┑(￣Д ￣)┍
+"Controls
+set mouse=a 			" Enables mouse mode. Elite vim wizards do not use this. Though it may make things faster lol
 set nocompatible 		" makes Vim behave more like the traditional Vi editor
 set ai 					" Enables autoindent for when you press \<CR>
 
@@ -45,7 +45,7 @@ set vb t_vb="" 			" Disables visual bell and sets visualbell character to empty.
 syntax on 				" Syntax settings.
 set noscrollbind 		" Synchronizes scrolling behavior between split windows. We want this off so we can scroll windows side-by-side indepentently.
 ""set relativenumber 	" Jumpy line strats, show lines as [4 3 2 1 [0] 1 2 3 4].
-""set nonumber 			" Set number. Show number on left side of screen.
+set number 				" Set number. Show number on left side of screen.
 ""set expandtab 		" Changes tab to spaces.
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
@@ -54,9 +54,17 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 set undofile
 set undodir=~/.vim/undo
 
-"Leader keys ==================================================================================================== 
-nnoremap <return> :noh<CR> 								" turns off the highlighting of the most recent search pattern
+" Set leader key (if not already)
+"let mapleader = "\\"
+
+"Leader keys
+" Leader-c: wrap current line in JSX comment {/* */}
 nnoremap <leader>t ^i{/* <Esc>$a */}<Esc>
+" Leader-y: remove JSX comment
+nnoremap <leader>y :s/^\s*{\/\*\s*\(.*\)\s*\*\/}$/\1/<CR>
+inoremap jk <Esc>
+nnoremap <return> :noh<CR> 								" turns off the highlighting of the most recent search pattern
+"nnoremap <leader>t ^i{/* <Esc>$a */}<Esc> 				" Not using?
 noremap <Leader>c :set cursorline! cursorcolumn!<CR> 	" Allow crosshair cursor highlighting. Press leader and c (\+c) to enable/disable
 " hi CursorLine   cterm=NONE ctermbg=0 					" ^
 " hi CursorColumn cterm=NONE ctermbg=0 					" ^
@@ -150,26 +158,15 @@ endif " has("autocmd")
 
 "Colors ==================================================================================================== 
 
-"PHase one: Choose the color scheme beforehand and enables colors
+"Choose the color scheme beforehand and enables colors
 "set termguicolors "Turns on 24-bit colors, 
 " set background=dark " /light
 
-"Phase 2: Choose Colorscheme Most commonly uses colorschemes:
-" colorscheme hemisu
-" colorscheme ayu
-" colorscheme one 
-" colorscheme jellybeans 
-" colorscheme paramount 
-"colorscheme molokai
-" colorscheme onehalfdark
-" colorscheme gruvbox
-" colorscheme nord
-" colorscheme seoul256
-" colorscheme desert
-" colorscheme hybrid
-" colorscheme lucius
+"Choose Colorscheme Most commonly uses colorschemes:
+" hemisu ayu one jellybeans paramount molokai onehalfdark gruvbox nord seoul256 desert hybrid lucius
+"colorscheme ayu
 
-" Phase 3: Force Delete GUI and CTERM background of Normal group for a dark terminal
+"Force Delete GUI and CTERM background of Normal group for a dark terminal
 hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE 
 
 " Phase 4: Create function to clear background and call it
@@ -195,21 +192,21 @@ let g:vim_ai_token_file_path = '~/.config/openai.token'
 
 "Vim Plug mod manager
 "call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 " List your plugins here
-"Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
 "Plug 'madox2/vim-ai'
-" Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 
-"call plug#end()
+call plug#end()
 
-"" Set leader key (if not already)
-let mapleader = "\\"
-
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Leader-c: wrap current line in JSX comment {/* */}
 nnoremap <leader>t ^i{/* <Esc>$a */}<Esc>
-
 " Leader-y: remove JSX comment
-nnoremap <leader>y :s/^\s*{\/*\s*\(.*\)\s*\*\/}$/\1/<CR>
+nnoremap <leader>y :s/^\s*{\/\*\s*\(.*\)\s*\*\/}$/\1/<CR>
 
-inoremap jk <Esc>
++filetype plugin indent on
++syntax on
