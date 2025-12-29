@@ -113,3 +113,28 @@ alias overdrive='toilet -f smmono12 -F border,metal "OVERDRIVE"'
 alias stealth='toilet -f future -F crop --filter crop "STEALTH"'
 alias meltdown='toilet -f smblock -F metal,border --gay "MELTDOWN"'
 alias victory='toilet -f pagga -F metal,border --gay "=== VICTORY ==="'
+
+# +-----------------------------------------------------------+
+# |                    Systemctl Aliases                      |
+# +-----------------------------------------------------------+
+alias jctl='sudo journalctl -u'
+alias sctl='sudo systemctl'
+alias sctlstart='sudo systemctl start'
+alias sctlstat='sudo systemctl status'
+alias sctlstop='sudo systemctl stop'
+alias sctldr='sudo systemctl daemon-reload'
+alias ctlstats='sudo systemctl status'
+alias ctlstart='sudo systemctl start'
+alias ctlreload='sudo systemctl restart'
+alias ctlrestart='sudo systemctl restart'
+alias ctlstop='sudo systemctl stop'
+alias ctlkill='sudo systemctl stop'
+alias dr='daemon-reload'
+
+# +-----------------------------------------------------------+
+# |                      NextJS Aliases                       |
+# +-----------------------------------------------------------+
+# Next.js scaffold
+nextapp() {
+  npm create next-app@latest "$1" --ts -- --tailwind --react-compiler --eslint --app --src-dir --turbopack --import-alias "@/*"
+}
