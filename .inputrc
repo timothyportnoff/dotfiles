@@ -12,7 +12,11 @@ set mark-directories on
 # Matches dotfiles if you do or don't type '.'
 set match-hidden-files off
 
-# ---- Tab completion style ----
+# Tab completion behavior
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+
+# Tab completion style ----
 # Make Tab cycle matches; Shift-Tab cycles backward
 "\t": menu-complete
 "\e[Z": backward-menu-complete       # Shift-Tab
