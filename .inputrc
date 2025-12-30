@@ -20,3 +20,6 @@ set menu-complete-display-prefix on
 # Make Tab cycle matches; Shift-Tab cycles backward
 "\t": menu-complete
 "\e[Z": backward-menu-complete       # Shift-Tab
+
+#Key binding to remap backspace
+"\C-h": backward-kill-word
